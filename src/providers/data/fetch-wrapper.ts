@@ -3,7 +3,7 @@ type Error = {
   message: string;
   statusCode: string;
 };
-const customeFetch = async (Url: string, options: RequestInit) => {
+const customFetch = async (Url: string, options: RequestInit) => {
   const accessToken = localStorage.getItem("accesss_token");
   const headers = options.headers as Record<string, string>;
   return await fetch(Url, {
@@ -41,7 +41,7 @@ const getGraphqlErrors = (
 };
 
 export const fetchWrapper = async (Url: string, options: RequestInit) => {
-  const response = await customeFetch(Url, options);
+  const response = await customFetch(Url, options);
   const responseClone = response.clone();
   const body = await responseClone.json();
   const error = getGraphqlErrors(body);
